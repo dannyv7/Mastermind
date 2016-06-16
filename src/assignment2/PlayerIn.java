@@ -17,6 +17,10 @@ public class PlayerIn {
 		colorPool = pool;
 	}
 	
+	/**
+	 * Reveals the player input String
+	 * @return
+	 */
 	public String showPlayerInput(){
 		return playerGuess;
 	}
@@ -33,7 +37,7 @@ public class PlayerIn {
 		
 		/* Check for any characters in the input that do not appear in the color pool */
 		for(int i = 0; i < playerGuess.length(); i += 1){
-			if(aiCode.indexOf(playerGuess.charAt(i)) == -1){
+			if(colorPool.indexOf(playerGuess.charAt(i)) == -1){
 				return false;
 			}
 		}

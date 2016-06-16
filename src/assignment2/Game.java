@@ -10,6 +10,8 @@ import java.util.Scanner;
  *
  */
 public class Game {
+	
+	/* Fields for class Game */
 	private String colors = "RYBG";
 	private String code = generateCode(colors, 4);
 	private boolean activeGame = true;
@@ -19,20 +21,48 @@ public class Game {
 		
 	}
 	
+	/**
+	 * Constructor for game with user specified rules
+	 * @param cl The colors we are playing with, passed as a String of capital letters
+	 * @param guesses Allowed The amount of guesses a player is allowed before they lose the game
+	 * @param codeLen Length of the code that the player must guess
+	 */
 	public Game(String cl,  int guessesAllowed, int codeLen){
 		colors = cl;
 		availableGuesses = guessesAllowed;
 		code = generateCode(colors, codeLen);
 	}
 	
+	/**
+	 * Method will being the game and run the game until it is flagged to stop 
+	 */
 	public  void runGame (){
+		Board gameBoard = new Board(code, code.length());
+		System.out.println("Generated: " + code);
 		while(activeGame){
+			/* Prompts for the user */
+			System.out.println("What is your next guess?");
+			System.out.println("Type in the characters for your guess and press enter.");
 			System.out.println("Enter your guess: ");
+			
+			/* Read the user input and store it in a class */
 			Scanner guess = new Scanner(System.in);
 			PlayerIn player = new PlayerIn(guess.nextLine(), code,  colors);
+			
+			/* If the player input is formatted correctly, compare it to the ai generated code and publish results */
 			if(!player.isFormatCorrect()){
 				System.out.println(player.showPlayerInput() + " -> INVALID GUESS");
-			}else{}
+			}else{
+				if(gameBoard.checkPlayerGuess(player.showPlayerInput())){
+					activeGame = false;
+				}else{
+					availableGuesses -= 1;
+					if(availableGuesses == 0){
+						activeGame = false;
+						System.out.println("Sorry, you are out of guesses. You lose, boo-hoo.");
+					}else{ System.out.println("You have " + availableGuesses + " guesses left."); }
+				}
+			}
 		}
 	}
 	
