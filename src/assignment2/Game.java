@@ -10,18 +10,33 @@ import java.util.Scanner;
  *
  */
 public class Game {
-	private static String colors = "RYBG";
-	private static String code = generateCode(colors, 4);
-	private static boolean activeGame = true;
+	private String colors = "RYBG";
+	private String code = generateCode(colors, 4);
+	private boolean activeGame = true;
+	private int availableGuesses = 12;
 	
-	public static void main(String args[]){
+	public Game(){
+		
+	}
+	
+	public Game(String cl,  int guessesAllowed, int codeLen){
+		colors = cl;
+		availableGuesses = guessesAllowed;
+		code = generateCode(colors, codeLen);
+	}
+	
+	public  void runGame (){
 		while(activeGame){
 			System.out.println("Enter your guess: ");
 			Scanner guess = new Scanner(System.in);
-			PlayerIn temp = new PlayerIn(guess.nextLine(), code);
+			PlayerIn player = new PlayerIn(guess.nextLine(), code,  colors);
+			if(!player.isFormatCorrect()){
+				System.out.println(player.showPlayerInput() + " -> INVALID GUESS");
+			}else{}
 		}
 	}
 	
+
 	/**
 	 * Generates the code to be guessed by the player
 	 * @param colorPool The  colors that can be chosen from
@@ -36,4 +51,6 @@ public class Game {
 		}
 		return temp.toString();
 	}
+	
+
 }
