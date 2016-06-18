@@ -15,9 +15,18 @@ public class Mastermind {
 				launch = false;
 			}
 		}
-		Game x = new Game();
+		//Game x = new Game();
+		Game x = new Game(arrToString(GameConfiguration.colors), GameConfiguration.guessNumber, GameConfiguration.pegNumber);
 		x.runGame();
 
 	}
+	
 
+	public static String arrToString(String [] x){
+		String temp = new String();
+		for(int i = 0; i < x.length; i += 1){
+			temp += x[i];
+		}
+		return temp;
+	}
 }
