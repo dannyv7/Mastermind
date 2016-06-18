@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class Game {
 	
 	/* Fields for class Game */
-	private String colors = "RYBG";
+	private String colors = "RYBGPM";
 	private String code = generateCode(colors, 4);
 	private boolean activeGame = true;
 	private int availableGuesses = 12;
