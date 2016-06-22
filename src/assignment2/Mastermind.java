@@ -16,7 +16,8 @@ public class Mastermind {
 			}
 		}
 		//Game x = new Game();
-		Game x = new Game(arrToString(GameConfiguration.colors), GameConfiguration.guessNumber, GameConfiguration.pegNumber);
+		Boolean showCode = true; 
+		Game x = new Game(showCode, arrToString(GameConfiguration.colors), GameConfiguration.guessNumber, GameConfiguration.pegNumber);
 		x.runGame();
 
 	}
