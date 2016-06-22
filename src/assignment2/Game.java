@@ -16,7 +16,7 @@ public class Game {
 	private String code = generateCode(colors, 4);
 	private boolean activeGame = true;
 	private int availableGuesses = 12;
-	
+	private boolean showSecret = false; 
 	public Game(){
 		
 	}
@@ -27,7 +27,7 @@ public class Game {
 	 * @param guesses Allowed The amount of guesses a player is allowed before they lose the game
 	 * @param codeLen Length of the code that the player must guess
 	 */
-	public Game(String cl,  int guessesAllowed, int codeLen){
+	public Game(Boolean test, String cl,  int guessesAllowed, int codeLen){
 		colors = cl;
 		availableGuesses = guessesAllowed;
 		code = generateCode(colors, codeLen);
@@ -38,7 +38,9 @@ public class Game {
 	 */
 	public  void runGame (){
 		Board gameBoard = new Board(code, code.length());
-		System.out.println("Generated: " + code);
+		if (showSecret) {
+			System.out.println("Generated: " + code);
+		}
 		while(activeGame){
 			/* Prompts for the user */
 			System.out.println("What is your next guess?");
