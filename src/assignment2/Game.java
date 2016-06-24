@@ -17,6 +17,7 @@ public class Game {
 	private boolean activeGame = true;
 	private int availableGuesses = 12;
 	private boolean showSecret = false; 
+	
 	public Game(){
 		
 	}
@@ -38,6 +39,7 @@ public class Game {
 	 */
 	public  void runGame (){
 		Board gameBoard = new Board(code, code.length());
+		History log = new History(); 
 		if (showSecret) {
 			System.out.println("Generated: " + code);
 		}
@@ -52,7 +54,9 @@ public class Game {
 			PlayerIn player = new PlayerIn(guess.nextLine(), code,  colors);
 			
 			/* If the player input is formatted correctly, compare it to the ai generated code and publish results */
-			if(!player.isFormatCorrect()){
+			if(guess.equals("history")) {
+				log.print();
+			}else if(!player.isFormatCorrect()){
 				System.out.println(player.showPlayerInput() + " -> INVALID GUESS");
 			}else{
 				if(gameBoard.checkPlayerGuess(player.showPlayerInput())){
@@ -75,7 +79,7 @@ public class Game {
 	 * @param len Length of the code
 	 * @return Randomly generated code in String format
 	 */
-	public static String generateCode(String colorPool, int len){
+	public String generateCode(String colorPool, int len){
 		StringBuilder temp = new StringBuilder();
 		Random rand = new Random();
 		for(int i = 0; i <len; i += 1){
