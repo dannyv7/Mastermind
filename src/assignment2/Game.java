@@ -15,9 +15,9 @@ public class Game {
 	private String colors = Mastermind.arrToString(GameConfiguration.colors);
 	private String code = generateCode(colors, colors.length());
 	private int availableGuesses = GameConfiguration.guessNumber;
+	public static History log = new History(); 
 	private boolean activeGame = true;
 	private boolean showSecret = false; 
-	public static History log = new History(); 
 	
 	public Game(){
 		
