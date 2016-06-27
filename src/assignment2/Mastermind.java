@@ -44,7 +44,9 @@ public class Mastermind {
 				String cmp1 = ready.nextLine();
 				if(cmp.equals(cmp1)){
 					launch = false;
-				}else { return; }
+				}else if(cmp1.equals("N")){
+					return; 
+				}else { System.out.println("Error, invalid input (Y/N only)"); }
 			}
 			
 			Boolean showCode = true; 
@@ -63,7 +65,7 @@ public class Mastermind {
 				} else if (another.equals("Y")) {
 					play = true; 
 					poll = false; 
-				}else{ return ;}
+				}else{ System.out.println("Error, invalid input (Y/N only)") ;}
 			}
 		}
 	}
