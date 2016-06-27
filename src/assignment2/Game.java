@@ -15,13 +15,11 @@ public class Game {
 	private String colors = Mastermind.arrToString(GameConfiguration.colors);
 	private String code = generateCode(colors, colors.length());
 	private int availableGuesses = GameConfiguration.guessNumber;
-	public static History log = new History(); 
+	public History log = new History(); 
 	private boolean activeGame = true;
 	private boolean showSecret = false; 
 	
-	public Game(){
-		
-	}
+	public Game(){}
 	
 	/**
 	 * Constructor for game with user specified rules
@@ -49,16 +47,17 @@ public class Game {
 			
 			/* Read the user input and store it in a class */
 			Scanner guess = new Scanner(System.in);
-			PlayerIn player = new PlayerIn(guess.nextLine(), code,  colors);
+			String guessStr = guess.nextLine();
+			PlayerIn player = new PlayerIn(guessStr, code,  colors);
 			
 			/* If the player input is formatted correctly, compare it to the ai generated code and publish results */
-			if(guess.toString().equals("history")) {
+			if(guessStr.equals("history")) {
 				log.print();
 			}else if(!player.isFormatCorrect()){
 				System.out.println(player.showPlayerInput() + " -> INVALID GUESS");
 			}else{
-				log.updateGuesses(guess.toString());
-				if(gameBoard.checkPlayerGuess(player.showPlayerInput())){
+				log.updateGuesses(guessStr);
+				if(gameBoard.checkPlayerGuess(player.showPlayerInput(), log)){
 					activeGame = false;
 				}else{
 					availableGuesses -= 1;

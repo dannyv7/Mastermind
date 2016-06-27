@@ -54,11 +54,9 @@ public class Mastermind {
 					poll = false; 
 				}
 			}
-			
 		}
 	}
 	
-
 	public static String arrToString(String [] x){
 		String temp = new String();
 		for(int i = 0; i < x.length; i += 1){

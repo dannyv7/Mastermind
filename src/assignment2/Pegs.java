@@ -6,9 +6,6 @@ public class Pegs {
 	private char color;
 	private Vector<Integer> positions = new  Vector<>(0);
 	private int occurence = 0;
-	
-
-	
 
 	public Pegs(char charAt, int i) {
 		color = charAt;

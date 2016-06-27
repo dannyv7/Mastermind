@@ -24,13 +24,12 @@ public class Board {
 		codeLen = len;
 	}
 	
-	
 	/**
 	 * Compares the player guess with the actual generated code
 	 * @param userln The player guess as a String
 	 * @return True if the player guesses exactly right, false otherwise
 	 */
-	public boolean checkPlayerGuess(String userIn){
+	public boolean checkPlayerGuess(String userIn, History log){
 		updateUserInput(userIn);
 		int blackPegs = 0;
 		int whitePegs = 0;
@@ -57,9 +56,9 @@ public class Board {
 				blackPegs += tempBlack;
 			}
 		}
-		Game.log.updateWhites(whitePegs);
-		Game.log.updateBlacks(blackPegs);
-		Game.log.updateRounds();
+		log.updateWhites(whitePegs);
+		log.updateBlacks(blackPegs);
+		log.updateRounds();
 		
 		/* Return true if the user has matched the pegs exactly, else false */
 		if(blackPegs == codeLen){
@@ -90,7 +89,6 @@ public class Board {
 				playerPegs.addElement(temp);
 			}
 		}
-		
 	}
 	/**
 	 * Returns the index of a color peg in a vector
