@@ -10,6 +10,12 @@ public class Mastermind {
 		
 		if(GameConfiguration.colors == null || GameConfiguration.colors.length == 0) {
 			System.out.println("Invalid number of colors");
+			return;
+		}
+		
+		if(GameConfiguration.pegNumber <=0){
+			System.out.println("Invalid pegNumber entry");
+			return;
 		}
 		
 		File msg = new File("src/assignment2/Intro.txt");
