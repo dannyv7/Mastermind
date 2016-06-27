@@ -44,7 +44,7 @@ public class Mastermind {
 				String cmp1 = ready.nextLine();
 				if(cmp.equals(cmp1)){
 					launch = false;
-				}
+				}else { return; }
 			}
 			
 			Boolean showCode = true; 
@@ -58,11 +58,12 @@ public class Mastermind {
 				String another = again.nextLine();
 				if(another.equals("N")){
 					play = false; 
-					poll = false; 
+					poll = false;
+					return; 
 				} else if (another.equals("Y")) {
 					play = true; 
 					poll = false; 
-				}
+				}else{ return ;}
 			}
 		}
 	}
