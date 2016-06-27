@@ -12,10 +12,10 @@ import java.util.Scanner;
 public class Game {
 	
 	/* Fields for class Game */
-	private String colors = "RYBGPM";
-	private String code = generateCode(colors, 4);
+	private String colors = Mastermind.arrToString(GameConfiguration.colors);
+	private String code = generateCode(colors, colors.length());
+	private int availableGuesses = GameConfiguration.guessNumber;
 	private boolean activeGame = true;
-	private int availableGuesses = 12;
 	private boolean showSecret = false; 
 	public static History log = new History(); 
 	
@@ -25,14 +25,10 @@ public class Game {
 	
 	/**
 	 * Constructor for game with user specified rules
-	 * @param cl The colors we are playing with, passed as a String of capital letters
-	 * @param guesses Allowed The amount of guesses a player is allowed before they lose the game
-	 * @param codeLen Length of the code that the player must guess
+	 * @param test display secret code for testing purposes 
 	 */
-	public Game(Boolean test, String cl,  int guessesAllowed, int codeLen){
-		colors = cl;
-		availableGuesses = guessesAllowed;
-		code = generateCode(colors, codeLen);
+	public Game(Boolean test){
+		showSecret = test;
 	}
 	
 	/**
@@ -84,6 +80,7 @@ public class Game {
 	 * @return Randomly generated code in String format
 	 */
 	public String generateCode(String colorPool, int len){
+		System.out.println("Generating secret code ....");
 		StringBuilder temp = new StringBuilder();
 		Random rand = new Random();
 		for(int i = 0; i <len; i += 1){
