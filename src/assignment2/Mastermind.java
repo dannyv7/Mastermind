@@ -1,20 +1,27 @@
 package assignment2;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Mastermind {
 
 	public static void main(String[] args) {
 		boolean launch = true;
-//		File msg = new File("Intro.txt");
-//		System.out.println(new File(".").getAbsoluteFile());
-//		Scanner sc = new Scanner(msg);
-//		while (sc.hasNextLine()) {
-//			String s = sc.nextLine();
-//            System.out.println(s);
-//        }
-//      sc.close();
+		File msg = new File("src/assignment2/Intro.txt");
+		System.out.println(new File(".").getAbsoluteFile());
+		Scanner sc;
+		try {
+			sc = new Scanner(msg);
+			while (sc.hasNextLine()) {
+				String s = sc.nextLine();
+	            System.out.println(s);
+	        }
+			sc.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
 		
 		while(launch){
 			System.out.print("You have " + GameConfiguration.guessNumber + 
