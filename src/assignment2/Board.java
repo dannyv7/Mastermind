@@ -55,9 +55,11 @@ public class Board {
 				/* Recount the overall amount of black and white pegs */
 				whitePegs += (tempWhite - tempBlack);
 				blackPegs += tempBlack;
-				
 			}
 		}
+		Game.log.updateWhites(whitePegs);
+		Game.log.updateBlacks(blackPegs);
+		Game.log.updateRounds();
 		
 		/* Return true if the user has matched the pegs exactly, else false */
 		if(blackPegs == codeLen){
@@ -67,7 +69,6 @@ public class Board {
 			System.out.println(userIn + " -> Result: " + blackPegs + " black peg(s) and " + whitePegs + " white peg(s)");
 			return false; 
 		}
-		
 		
 		/* This point is reached when the user sucks and guesses completely wrong */
 		System.out.println(userIn + "-> Result: No pegs");

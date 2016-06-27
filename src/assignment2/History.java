@@ -10,6 +10,18 @@ public class History {
 		numRounds++;
 	}
 	
+	public void updateBlacks(int num) {
+		blackPegs[numRounds] = num;
+	}
+	
+	public void updateWhites(int num) {
+		whitePegs[numRounds] = num;
+	}
+	
+	public void updateGuesses(String guess) {
+		guesses[numRounds] = guess; 
+	}
+	
 	public void print() {
 		if(numRounds == 0) {
 			System.out.println("No rounds yet");

@@ -12,11 +12,12 @@ import java.util.Scanner;
 public class Game {
 	
 	/* Fields for class Game */
-	private String colors = "RYBGPM";
-	private String code = generateCode(colors, 4);
+	private String colors = Mastermind.arrToString(GameConfiguration.colors);
+	private String code = generateCode(colors, colors.length());
+	private int availableGuesses = GameConfiguration.guessNumber;
 	private boolean activeGame = true;
-	private int availableGuesses = 12;
 	private boolean showSecret = false; 
+	public static History log = new History(); 
 	
 	public Game(){
 		
@@ -24,14 +25,10 @@ public class Game {
 	
 	/**
 	 * Constructor for game with user specified rules
-	 * @param cl The colors we are playing with, passed as a String of capital letters
-	 * @param guesses Allowed The amount of guesses a player is allowed before they lose the game
-	 * @param codeLen Length of the code that the player must guess
+	 * @param test display secret code for testing purposes 
 	 */
-	public Game(Boolean test, String cl,  int guessesAllowed, int codeLen){
-		colors = cl;
-		availableGuesses = guessesAllowed;
-		code = generateCode(colors, codeLen);
+	public Game(Boolean test){
+		showSecret = test;
 	}
 	//
 	/**
@@ -39,10 +36,11 @@ public class Game {
 	 */
 	public  void runGame (){
 		Board gameBoard = new Board(code, code.length());
-		History log = new History(); 
+		
 		if (showSecret) {
-			System.out.println("Generated: " + code);
+			System.out.println("SECRET CODE: " + code);
 		}
+		
 		while(activeGame){
 			/* Prompts for the user */
 			System.out.println("What is your next guess?");
@@ -54,11 +52,12 @@ public class Game {
 			PlayerIn player = new PlayerIn(guess.nextLine(), code,  colors);
 			
 			/* If the player input is formatted correctly, compare it to the ai generated code and publish results */
-			if(guess.equals("history")) {
+			if(guess.toString().equals("history")) {
 				log.print();
 			}else if(!player.isFormatCorrect()){
 				System.out.println(player.showPlayerInput() + " -> INVALID GUESS");
 			}else{
+				log.updateGuesses(guess.toString());
 				if(gameBoard.checkPlayerGuess(player.showPlayerInput())){
 					activeGame = false;
 				}else{
@@ -80,6 +79,7 @@ public class Game {
 	 * @return Randomly generated code in String format
 	 */
 	public String generateCode(String colorPool, int len){
+		System.out.println("Generating secret code ....");
 		StringBuilder temp = new StringBuilder();
 		Random rand = new Random();
 		for(int i = 0; i <len; i += 1){
