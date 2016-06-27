@@ -59,6 +59,7 @@ public class Board {
 		}
 		Game.log.updateWhites(whitePegs);
 		Game.log.updateBlacks(blackPegs);
+		Game.log.updateRounds();
 		
 		/* Return true if the user has matched the pegs exactly, else false */
 		if(blackPegs == codeLen){
