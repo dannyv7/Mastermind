@@ -17,6 +17,7 @@ public class Game {
 	private boolean activeGame = true;
 	private int availableGuesses = 12;
 	private boolean showSecret = false; 
+	public static History log = new History(); 
 	
 	public Game(){
 		
@@ -39,10 +40,11 @@ public class Game {
 	 */
 	public  void runGame (){
 		Board gameBoard = new Board(code, code.length());
-		History log = new History(); 
+		
 		if (showSecret) {
-			System.out.println("Generated: " + code);
+			System.out.println("SECRET CODE: " + code);
 		}
+		
 		while(activeGame){
 			/* Prompts for the user */
 			System.out.println("What is your next guess?");
@@ -54,11 +56,13 @@ public class Game {
 			PlayerIn player = new PlayerIn(guess.nextLine(), code,  colors);
 			
 			/* If the player input is formatted correctly, compare it to the ai generated code and publish results */
-			if(guess.equals("history")) {
+			if(guess.toString().equals("history")) {
 				log.print();
 			}else if(!player.isFormatCorrect()){
 				System.out.println(player.showPlayerInput() + " -> INVALID GUESS");
 			}else{
+				log.updateGuesses(guess.toString());
+				log.updateRounds();
 				if(gameBoard.checkPlayerGuess(player.showPlayerInput())){
 					activeGame = false;
 				}else{

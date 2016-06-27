@@ -55,7 +55,8 @@ public class Board {
 				/* Recount the overall amount of black and white pegs */
 				whitePegs += (tempWhite - tempBlack);
 				blackPegs += tempBlack;
-				
+				Game.log.updateWhites(whitePegs);
+				Game.log.updateBlacks(blackPegs);
 			}
 		}
 		

@@ -7,6 +7,8 @@ public class Mastermind {
 	public static void main(String[] args) {
 		boolean launch = true;
 		while(launch){
+			System.out.print("You have " + GameConfiguration.guessNumber + 
+					" guesses to figure out the secret code or you lose the game. ");
 			System.out.println("Are you ready to play? (Y/N) :");
 			Scanner ready = new Scanner(System.in);
 			String cmp = new String("Y");
