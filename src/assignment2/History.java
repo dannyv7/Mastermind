@@ -6,6 +6,7 @@ public class History {
 	private String[] guesses = new String[GameConfiguration.guessNumber];
 	private int numRounds = 0;
 	
+	
 	public void updateRounds() {
 		numRounds++;
 	}
@@ -27,9 +28,10 @@ public class History {
 			System.out.println("No rounds yet");
 		}
 		
+		System.out.println("ROUND \tGUESS \t\tBLACK PEGS \t\tWHITE PEGS");
 		for (int i = 0; i < numRounds; i++) {
-			System.out.println("ROUND \tGUESS \t\tBLACK PEGS \t\tWHITE PEGS");
-			System.out.println((i + 1) + " \t" + guesses[i] + " \t\t" + blackPegs[i] + " \t\t" + whitePegs[i]);
+			System.out.println((i + 1) + " \t" + guesses[i] + " \t\t" 
+					+ blackPegs[i] + " \t\t\t" + whitePegs[i]);
 		}
 		return;
 	}

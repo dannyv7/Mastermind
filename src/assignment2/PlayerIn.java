@@ -5,7 +5,6 @@ public class PlayerIn {
 	String playerGuess;
 	String colorPool;
 	
-	
 	/**
 	 * Constructor for PlayerIn class
 	 * @param input User input when prompted
