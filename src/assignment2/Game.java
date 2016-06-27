@@ -58,7 +58,6 @@ public class Game {
 				System.out.println(player.showPlayerInput() + " -> INVALID GUESS");
 			}else{
 				log.updateGuesses(guess.toString());
-				log.updateRounds();
 				if(gameBoard.checkPlayerGuess(player.showPlayerInput())){
 					activeGame = false;
 				}else{
