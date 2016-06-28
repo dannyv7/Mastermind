@@ -6,6 +6,7 @@ public class History {
 	private String[] guesses = new String[GameConfiguration.guessNumber];
 	private int numRounds = 0;
 	
+	
 	public void updateRounds() {
 		numRounds++;
 	}
