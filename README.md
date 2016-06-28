@@ -1,5 +1,5 @@
 # Mastermind
-/*  * EE422C Project 2 (Mastermind) submission by
+/** EE422C Project 2 (Mastermind) submission by
  * Replace <...> with your actual data. 
  * <Joel Guo>
  * <jg55475>
