@@ -15,3 +15,5 @@ Setting showCode to true at the bottom of the main in Mastermind.java will displ
 Wasn't sure of what format the UML was supposed to be in. I submitted both a .uml and .pdf just in case. - Joel 
 
 UML Diagrams are inside the assignment2 folder with the rest of the Java code -Danny
+Please make sure to leave the txt file with the rest of our .java files - we need it for the intro text
+The github sync seems to be a little off as every recent commit is shown as Joel's commit even when we are both commiting 
