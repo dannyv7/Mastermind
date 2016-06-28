@@ -11,6 +11,7 @@ import java.util.Scanner;
  */
 public class Game {
 	
+	
 	/* Fields for class Game */
 	private String colors = Mastermind.arrToString(GameConfiguration.colors);
 	private String code = generateCode(colors, GameConfiguration.pegNumber);

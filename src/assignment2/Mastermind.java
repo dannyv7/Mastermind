@@ -12,7 +12,6 @@ public class Mastermind {
 			System.out.println("Invalid number of colors");
 		}
 		
-		
 		File msg = new File("src/assignment2/Intro.txt");
 		System.out.println(new File(".").getAbsoluteFile());
 		Scanner sc;
