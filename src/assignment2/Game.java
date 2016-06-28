@@ -13,7 +13,7 @@ public class Game {
 	
 	/* Fields for class Game */
 	private String colors = Mastermind.arrToString(GameConfiguration.colors);
-	private String code = generateCode(colors, colors.length());
+	private String code = generateCode(colors, GameConfiguration.pegNumber);
 	private int availableGuesses = GameConfiguration.guessNumber;
 	public History log = new History(); 
 	private boolean activeGame = true;
@@ -33,7 +33,7 @@ public class Game {
 	 * Method will being the game and run the game until it is flagged to stop 
 	 */
 	public  void runGame (){
-		Board gameBoard = new Board(code, code.length());
+		Board gameBoard = new Board(code, GameConfiguration.pegNumber);
 		
 		if (showSecret) {
 			System.out.println("SECRET CODE: " + code);

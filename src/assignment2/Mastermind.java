@@ -8,6 +8,10 @@ public class Mastermind {
 
 	public static void main(String[] args) {
 		
+		if(GameConfiguration.colors == null || GameConfiguration.colors.length == 0) {
+			System.out.println("Invalid number of colors");
+		}
+		
 		File msg = new File("src/assignment2/Intro.txt");
 		System.out.println(new File(".").getAbsoluteFile());
 		Scanner sc;
